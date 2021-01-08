@@ -1,0 +1,9 @@
+@import 'src/styles/_vars.scss';
+
+.counter{
+    width: 100%;
+    padding-top: ($gutter + rem);
+    padding-bottom: ($gutter + rem);
+    font-size: 1.6em;
+    border-bottom: 1px solid $color-light;
+}

@@ -1,0 +1,28 @@
+@import 'src/styles/_vars.scss';
+
+.tasks{
+
+    .tasks-list{
+   
+        .task-title{
+        
+           height: 30px;
+           padding-top: (2*$gutter + rem);
+           padding-bottom: ($gutter + rem);
+           padding-left:  ($gutter + rem);
+           padding-right: ($gutter + rem);
+           color: black;
+           font-weight: 400;
+           font-size: 1.2em;
+           background-color: $color-light;
+           border-radius: 15px;
+           margin: ($gutter + rem);
+
+           &--done{
+            text-decoration: line-through;
+           }
+
+           
+        }
+    }
+}
