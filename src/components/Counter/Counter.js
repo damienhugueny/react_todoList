@@ -4,12 +4,29 @@ import './counter.scss';
 
 import PropTypes from 'prop-types'; 
 
-const Counter = ({ number }) => (
-    <div className="counter">{number} tâches en cours</div>
-);
+const Counter = ({ nbTasks }) => {
+
+    // let text;
+    // if(nbTasks > 1){
+    //     text = `${nbTasks} tâches en cours`;
+    // }
+    // else{
+    //     text = `${nbTasks} tâche en cours`;
+    // }
+
+    // return (
+    //     <p className="counter">{text}</p>
+    // );
+
+    const text = nbTasks > 1 ? `${nbTasks} tâches` : `${nbTasks} tâche`;
+
+    return (
+        <p className="counter">{text} en cours</p>
+    );
+}
 
 Counter.prototype = {
-    number: PropTypes.number.isRequired,
+    nbTasks: PropTypes.number.isRequired,
 };
 
 export default Counter;

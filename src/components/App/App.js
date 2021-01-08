@@ -6,6 +6,7 @@ import tasksList from '../../data/tasks';
 
 import Counter from '../Counter/Counter';
 import Tasks from '../Tasks/Tasks';
+import Form from '../Form/Form';
 
 class App extends React.Component {
 
@@ -15,7 +16,7 @@ class App extends React.Component {
     }
 
     state = {
-        task : '',
+      
     };
 
     countTasks = () => {
@@ -31,9 +32,9 @@ class App extends React.Component {
         const resultTasks = this.countTasks();
 
         return (
-            <div className="app">
-                <div>Form</div>
-                <Counter number={resultTasks} />
+            <div className="todo">
+                <Form />
+                <Counter nbTasks={resultTasks} />
                 <Tasks tasks={tasksList}/>
             </div>
         );
