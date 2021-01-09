@@ -2,7 +2,7 @@ import React from 'react';
 
 import './app.scss';
 
-import tasksList from '../../data/tasks';
+import initialTasks from '../../data/tasks';
 
 import Counter from '../Counter/Counter';
 import Tasks from '../Tasks/Tasks';
@@ -10,32 +10,37 @@ import Form from '../Form/Form';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-    
+    state = {
+        // valeur de l'input permettant d'ajouter une tâche
+        newTaskValue : '',
     }
 
-    state = {
-      
+    setTaskValue = (newTaskValue) => {
+        this.setState({
+            //newTaskValue : newTaskValue,
+            // strictement équivalent à :
+            newTaskValue,
+        });
     };
 
-    countTasks = () => {
-        console.log(tasksList);
-        const tasksTodo = tasksList.filter(data => data.done === false);
-        const numberOfTask = tasksTodo.length;
-        console.log(`nombre de tâches : ${numberOfTask}`);
-        return numberOfTask;
-    }
+    //addTask = () => {
+
+    //};
+
 
     render() {
-
-        const resultTasks = this.countTasks();
+        // pour renomer:  const { newTaskValue : inputValue } = this.state;
+        const { newTaskValue  } = this.state;
+        const nbTasksNotDone = initialTasks.filter((task) => !task.done).length;
+        const addTask = () => {
+            console.log('ajout d\'une tâche');
+        };
 
         return (
             <div className="todo">
-                <Form />
-                <Counter nbTasks={resultTasks} />
-                <Tasks tasks={tasksList}/>
+                <Form addTask={addTask} value={newTaskValue} />
+                <Counter nbTasks={nbTasksNotDone} />
+                <Tasks tasks={initialTasks}/>
             </div>
         );
     }
