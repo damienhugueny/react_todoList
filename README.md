@@ -32,8 +32,3 @@ State
 - Ordonner les tâches
   - En haut, les tâches non effectuées
   - Ensuite, les tâches effectuées
-
-video
-
-24:29 
-2020-03-09 13-06-38.mp4
