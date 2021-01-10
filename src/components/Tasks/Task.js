@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // yarn add classnames
 import classNames from 'classnames';
 
-const Task = ({ id, done, label }) => {
+const Task = ({ id, done, label, setDone }) => {
 
     /*
     let classCss = 'taskContainer';
@@ -18,13 +18,19 @@ const Task = ({ id, done, label }) => {
     const classCss = classNames('taskContainer', {'taskContainer--done': done});
     const checkboxId = `checkbox-${id}`;
 
+    const handleChange = (event) => {
+        //console.log(event.target.checked);
+        setDone(id, event.target.checked)
+    };
+
     return (
         <li  className={classCss}>
         <input 
             className="input-checkbox" 
             type="checkbox"
-            defaultChecked={done} 
+            checked={done} 
             id={checkboxId}
+            onChange={handleChange}
         />
         <label className="taskLabel" htmlFor={checkboxId}>{label}</label>
     </li>

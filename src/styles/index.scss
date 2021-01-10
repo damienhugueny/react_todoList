@@ -5,5 +5,5 @@ body{
   font-family: $font;
   font-weight: 300;
   color: $color;
-  background-color: #2e5849;
+  background: scale-color($color: $mainColor,$lightness: 0%);
 }

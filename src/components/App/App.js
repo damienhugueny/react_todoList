@@ -94,6 +94,43 @@ class App extends React.Component {
        
     };
 
+    updateTask = (id, newValue) => {
+
+        const { tasks } = this.state;
+
+        // nouveau tableau, dans lequel on va remplacer une tâche
+        const newTasks = tasks.map((task) => {
+            if (task.id === id){
+                // IMPORTANT je ne modifie pas l'objet, je le remplace
+                /*
+                    {
+                        id,
+                        label,
+                        done
+                    }
+                */
+                return {
+                    //id: task.id,
+                    //label: task.label,
+                    //done: newValue,
+
+                    //mieux:
+                    ...task,
+                    done: newValue
+                };
+            }
+            // sinon retourner la tâche telle quel('esle' est falcultatif à cause du return )
+            return task;
+        });
+
+        // mettre a jour le state
+        this.setState({
+            tasks: newTasks,
+        });
+
+        console.log(`new value for id=${id} : ${newValue}`);
+    };
+
 
     render() {
         // pour renomer:  const { newTaskValue : inputValue } = this.state;
@@ -106,7 +143,7 @@ class App extends React.Component {
             <div className="todo">
                 <Form addTask={this.addTask} setValue={this.setTaskValue} value={newTaskValue} />
                 <Counter nbTasks={nbTasksNotDone} />
-                <Tasks tasks={tasks}/>
+                <Tasks tasks={tasks} setDone={this.updateTask}/>
             </div>
         );
     }
