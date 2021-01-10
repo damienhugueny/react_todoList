@@ -30,15 +30,18 @@ class App extends React.Component {
 
     render() {
         // pour renomer:  const { newTaskValue : inputValue } = this.state;
-        const { newTaskValue  } = this.state;
+        const { newTaskValue } = this.state;
+
+        // récupère les tâches qui sont différentes de true
         const nbTasksNotDone = initialTasks.filter((task) => !task.done).length;
+
         const addTask = () => {
             console.log('ajout d\'une tâche');
         };
 
         return (
             <div className="todo">
-                <Form addTask={addTask} value={newTaskValue} />
+                <Form addTask={addTask} setValue={this.setTaskValue} value={newTaskValue} />
                 <Counter nbTasks={nbTasksNotDone} />
                 <Tasks tasks={initialTasks}/>
             </div>

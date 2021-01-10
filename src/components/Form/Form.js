@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './form.scss';
 
-const Form = ({ addTask, value }) => {
+const Form = ({ addTask, value, setValue }) => {
     const handleSubmit =  (event) => {
         event.preventDefault();
 
@@ -15,6 +15,8 @@ const Form = ({ addTask, value }) => {
         // source de vérité (state), et si l'input veut changer la valeur qu'il affiche,
         // il demanderait la mise à jour du state : composant contrôlé
 
+        // le composant est contrôlé, à tout moment App connaît la valeur de l'input
+        // (state), donc pas besoin d'envoyer d'information supplémentaire au submit
         addTask();
 };
 
@@ -34,7 +36,7 @@ const Form = ({ addTask, value }) => {
                 placeholder="Ajouter une tâche"
                 className="input-addTask"
                 value={value}
-                onChange={() => console.log('onChange')}
+                onChange={(event) => setValue(event.target.value)}
             />
         </form>
     )
@@ -44,6 +46,7 @@ const Form = ({ addTask, value }) => {
 Form.propTypes = {
     addTask : PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired,
 };
 
 export default Form;
